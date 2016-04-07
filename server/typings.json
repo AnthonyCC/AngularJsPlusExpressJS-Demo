@@ -1,0 +1,12 @@
+{
+  "version": false,
+  "ambientDependencies": {
+    "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",
+    "debug": "registry:dt/debug#0.0.0+20160317120654",
+    "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#d1f6bde13f2209be42e86c3686761e8bfcbb50a5",
+    "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#d1f6bde13f2209be42e86c3686761e8bfcbb50a5",
+    "morgan": "registry:dt/morgan#1.2.2+20160317120654",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#d1f6bde13f2209be42e86c3686761e8bfcbb50a5",
+    "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#d1f6bde13f2209be42e86c3686761e8bfcbb50a5"
+  }
+}
