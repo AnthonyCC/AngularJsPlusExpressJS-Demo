@@ -32,3 +32,10 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+
+#ignore IDE configuration files
+.idea
+
+#ignore build files
+build

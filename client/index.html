@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- 1. Load libraries -->
+    <script src="libs/libs.js"></script>
+    <script src="/test/test.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+      debugger;
+      System.config({
+        packages: {
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/main')
+              .then(null, console.error.bind(console));
+    </script>
+  </head>
+  <body>
+    <my-app>Loading...</my-app>
+  </body>
+</html>
