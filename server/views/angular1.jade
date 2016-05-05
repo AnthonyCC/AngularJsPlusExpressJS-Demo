@@ -1,0 +1,18 @@
+doctype html
+html('ng-app'='restaurantApp')
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/base.css')
+    script(src='/libs/libs.js')
+    script(src="/app/components/restaurant/restaurantController.js")
+  body
+    h1= title
+    p Welcome to #{title}, testing by #{author}
+    div Environment5: #{settings.env}
+    div test subdiv
+    div(class="testTable")
+    script.
+      var length = $('div').length;
+      var text = '#{title}';
+
+

@@ -7,6 +7,7 @@ import express = require('express');
 import bodyParser = require('body-parser');
 import morgan = require('morgan');
 import indexRoutes = require('./routes/index');
+import restaurantRoutes = require('./routes/restaurant');
 
 import http = require('http');
 
@@ -36,7 +37,9 @@ process.on('uncaughtException', (err) => {
  * Routes
  */
 
-// serve index
+// serve routes, order matters
+app.use('/restaurant', restaurantRoutes);
+
 app.use('/', indexRoutes);
 
 // Error handling

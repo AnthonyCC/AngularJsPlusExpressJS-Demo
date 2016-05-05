@@ -4,6 +4,13 @@ setup:
 3) npm install -g typings
 4) cd server && typings install
 
+
+search for a typing definiton:
+typings search <name>
+
+install a typing definiton:
+typings install <name> --ambient --save
+
 debug:
 DEBUG=routes:index npm start
 

@@ -57,6 +57,7 @@ gulp.task('build:server-view', function () {
 /*
   jsNPMDependencies, sometimes order matters here! so be careful!
 */
+//Angular 2
 var jsNPMDependenciesDev = [
 	'es6-shim/es6-shim.min.js',
 	'systemjs/dist/system-polyfills.js',
@@ -65,7 +66,13 @@ var jsNPMDependenciesDev = [
 	'systemjs/dist/system.src.js',
 	'rxjs/bundles/Rx.js',
 	'angular2/bundles/angular2.dev.js'
-]
+];
+// Angular 1
+jsNPMDependenciesDev.push('angular/angular.js');
+
+// jQuery
+jsNPMDependenciesDev.push('jquery/dist/jquery.js');
+
 var jsNPMDependenciesProd = [
 	'angular2/bundles/angular2-all.umd.minjs',
 	'systemjs/dist/system.js'
@@ -79,7 +86,7 @@ gulp.task('build:client-libs', function(){
 		mappedPaths = jsNPMDependenciesProd.map(file => {return path.resolve('node_modules', file)});
 
 	}
-
+	mappedPaths.push(path.resolve('client/libs/ag-grid.js'));
     //Let's copy our head dependencies into a build/libs
     var copyJsNPMDependencies = gulp.src(mappedPaths, {base:'node_modules'})
 		.pipe(concat('libs.js'))
@@ -87,13 +94,23 @@ gulp.task('build:client-libs', function(){
 
     return copyJsNPMDependencies;
 });
-// Client, html files
 
 gulp.task('build:client-html', function () {
-	return gulp.src(['client/**.html', 'client/**/**.css'], {base:'client'})
+	return gulp.src(['client/**.html', 'client/**/**.css', 'client/**.ico'], {base:'client'})
 		.pipe(gulp.dest('build/client'));
 });
+// Client, css files
+gulp.task('build:client-base-css', function () {
+	var baseCss = [
+		'bootstrap/dist/css/bootstrap.css'
+	];
 
+	var mappedPaths = baseCss.map(file => {return path.resolve('node_modules', file)});
+
+	return gulp.src(mappedPaths, {base:'node_modules'})
+		.pipe(concat('base.css'))
+		.pipe(gulp.dest('build/client/stylesheets'));
+});
 // Client, AngularJS
 
 
@@ -111,7 +128,7 @@ gulp.task('build:client-app', function(){
 
 gulp.task('build', function(callback){
 	console.log('Env: '+ process.env.NODE_ENV);
-	runSequence('clean', 'build:server-js', 'build:server-view', 'build:client-libs', 'build:client-html', 'build:client-app', callback);
+	runSequence('clean', 'build:server-js', 'build:server-view', 'build:client-libs', 'build:client-html', 'build:client-base-css', 'build:client-app', callback);
 });
 
 gulp.task('build:server', function(){
